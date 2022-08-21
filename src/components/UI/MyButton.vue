@@ -18,11 +18,8 @@ export default {
   border: none;
   color: $second;
   background: $btnActive;
-  box-shadow: 0px 2px 4px $shadow;
+  box-shadow: 0 2px 4px $shadow;
   border-radius: 10px;
   cursor: pointer;
-}
-.btn:active {
-  box-shadow: 0px 0px 4px $btnActive;
 }
 </style>

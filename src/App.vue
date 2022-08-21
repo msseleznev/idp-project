@@ -9,7 +9,7 @@
             </div>
             <div class="main">
                 <div class="sidebar">
-                    <product-form />
+                    <product-form @create="createProduct" />
                     <div />
                 </div>
                 <div class="content">
@@ -76,7 +76,8 @@ export default {
           body: 'какой-то продукт13',
           price: 10000
         }
-      ]
+      ],
+      selectedSort: ''
     };
   },
   computed: {
@@ -87,7 +88,7 @@ export default {
   },
   methods: {
     createProduct(product) {
-      this.products.push(product);
+      this.products.unshift(product);
     },
     removeProduct(product) {
       this.products = this.product.filter(p => p.id !== product.id);
