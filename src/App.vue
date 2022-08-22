@@ -42,40 +42,40 @@ export default {
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
           title: 'Наименование товара',
           body: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-          price: 1
+          price: 1000
         },
         {
           id: 2,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт2',
+          title: 'какой-то продукт б',
           body: 'какой-то продукт2',
           price: 2
         },
         {
           id: 3,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт3',
-          body: 'какой-то продукт13',
-          price: 3
+          title: 'какой-то продукт г',
+          body: 'какой-то продукт3',
+          price: 100
         },
         {
           id: 4,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт3',
-          body: 'какой-то продукт13',
-          price: 4
+          title: 'какой-то продукт е',
+          body: 'какой-то продукт3',
+          price: 44
         },
         {
           id: 5,
           img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGwEiK8eS0HHGcBl0sZYrcjTh9ZFrMRK99Q&usqp=CAU',
-          title: 'какой-то продукт3',
-          body: 'какой-то продукт13',
-          price: 5
+          title: 'какой-то продукт5',
+          body: 'какой-то продукт3',
+          price: 55
         },
         {
           id: 6,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт3',
+          title: 'какой-то продукт6',
           body: 'какой-то продукт13',
           price: 6
         }
@@ -99,12 +99,19 @@ export default {
   },
   computed: {
     sortedProduct() {
-      const sortedProduct = [...this.products].sort((product1, product2) => product1[this.selectedSort]
+      const sortedTitle = [...this.products].sort((product1, product2) => product1[this.selectedSort]
         ?.localeCompare(product2[this.selectedSort]));
-      if (this.selectedSort === 'priceMax') {
-        return sortedProduct.reverse();
+      const sortedPrice = [...this.products].sort((product1, product2) => (product1.price >= product2.price ? -1 : 1));
+      if (this.selectedSort === 'title') {
+        return sortedTitle;
       }
-      return sortedProduct;
+      if (this.selectedSort === 'priceMax') {
+        return sortedPrice;
+      }
+      if (this.selectedSort === 'priceMin') {
+        return sortedPrice.reverse();
+      }
+      return this.products;
     }
   },
   methods: {
