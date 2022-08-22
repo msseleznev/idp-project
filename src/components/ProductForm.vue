@@ -7,6 +7,7 @@
             <my-input
                 class="formItem"
                 label="Наименование товара"
+                is-required="true"
                 type="text"
                 placeholder="Введите наименование товара"
                 v-model="product.title"
@@ -36,6 +37,7 @@
             <my-button
                 class="btn"
                 @click="createProduct"
+                v-model:isActive="isActive"
             >
                 Добавить товар
             </my-button>
@@ -53,8 +55,9 @@ export default {
         title: '',
         body: '',
         img: '',
-        price: 0
-      }
+        price: ''
+      },
+      isActive: true
     };
   },
   methods: {
@@ -65,7 +68,7 @@ export default {
         title: '',
         body: '',
         img: '',
-        price: 0
+        price: ''
       };
     }
   }

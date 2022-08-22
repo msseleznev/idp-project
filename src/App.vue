@@ -5,7 +5,10 @@
                 <h2>
                     Добавление товара
                 </h2>
-                <my-select model-value="" />
+                <my-select
+                    v-model="selectedSort"
+                    :options="sortOptions"
+                />
             </div>
             <div class="main">
                 <div class="sidebar">
@@ -39,51 +42,69 @@ export default {
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
           title: 'Наименование товара',
           body: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-          price: 10000
+          price: 1
         },
         {
           id: 2,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
           title: 'какой-то продукт2',
           body: 'какой-то продукт2',
-          price: 10000
+          price: 2
         },
         {
           id: 3,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
           title: 'какой-то продукт3',
           body: 'какой-то продукт13',
-          price: 10000
+          price: 3
         },
         {
           id: 4,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
           title: 'какой-то продукт3',
           body: 'какой-то продукт13',
-          price: 10000
+          price: 4
         },
         {
           id: 5,
           img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGwEiK8eS0HHGcBl0sZYrcjTh9ZFrMRK99Q&usqp=CAU',
           title: 'какой-то продукт3',
           body: 'какой-то продукт13',
-          price: 10000
+          price: 5
         },
         {
           id: 6,
           img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
           title: 'какой-то продукт3',
           body: 'какой-то продукт13',
-          price: 10000
+          price: 6
         }
       ],
-      selectedSort: ''
+      selectedSort: '',
+      sortOptions: [
+        {
+          value: 'title',
+          name: 'По наименованию'
+        },
+        {
+          value: 'priceMax',
+          name: 'По цене max'
+        },
+        {
+          value: 'priceMin',
+          name: 'По цене min'
+        }
+      ]
     };
   },
   computed: {
     sortedProduct() {
-      return [...this.products].sort((product1, product2) => product1[this.selectedSort]
+      const sortedProduct = [...this.products].sort((product1, product2) => product1[this.selectedSort]
         ?.localeCompare(product2[this.selectedSort]));
+      if (this.selectedSort === 'priceMax') {
+        return sortedProduct.reverse();
+      }
+      return sortedProduct;
     }
   },
   methods: {

@@ -2,11 +2,16 @@
     <label
         class="label"
         :for="label"
-    > {{ label }}
+    > <div style="display: flex">
+          {{ label }}<div
+              v-if="true"
+              class="circle"
+          />
+      </div>
         <input
             :id="label"
             class="input"
-            type="textarea"
+            type="text"
             :placeholder="placeholder"
             aria-label="placeholder"
             :value="modelValue"
@@ -61,6 +66,12 @@ export default {
   .input:focus {
     outline: none;
     box-shadow: 0 0 1px 1px #4d90f0;
+  }
+  .circle {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: red;
   }
 }
 

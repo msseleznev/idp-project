@@ -42,7 +42,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   @media screen and (max-width: 1420px) {
     justify-content: center;
   }
