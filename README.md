@@ -1,24 +1,19 @@
 # idp-project
-
-## Project setup
+### Для проверки задания:
+> node 16.10.0
+```
+git clone https://github.com/msseleznev/idp-project.git
+```
+```
+cd idp-project
+```
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
 ```
 yarn serve
 ```
+- По умолчанию localhost:8080 :   http://localhost:8080/
 
-### Compiles and minifies for production
-```
-yarn build
-```
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
