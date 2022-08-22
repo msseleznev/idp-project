@@ -6,7 +6,8 @@
                     Добавление товара
                 </h2>
                 <my-select
-                    v-model="selectedSort"
+                    :model-value="selectedSort"
+                    @update:model-value="setSelectedSort"
                     :options="sortOptions"
                 />
             </div>
@@ -31,96 +32,30 @@
 import ProductForm from '@/components/ProductForm';
 import MySelect from '@/components/UI/MySelect';
 import ProductsList from '@/components/ProductsList';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   components: { ProductsList, MySelect, ProductForm },
   data() {
-    return {
-      products: [
-        {
-          id: 1,
-          img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'Наименование товара',
-          body: 'Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк',
-          price: 1000
-        },
-        {
-          id: 2,
-          img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт б',
-          body: 'какой-то продукт2',
-          price: 2
-        },
-        {
-          id: 3,
-          img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт г',
-          body: 'какой-то продукт3',
-          price: 100
-        },
-        {
-          id: 4,
-          img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт е',
-          body: 'какой-то продукт3',
-          price: 44
-        },
-        {
-          id: 5,
-          img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGwEiK8eS0HHGcBl0sZYrcjTh9ZFrMRK99Q&usqp=CAU',
-          title: 'какой-то продукт5',
-          body: 'какой-то продукт3',
-          price: 55
-        },
-        {
-          id: 6,
-          img: 'https://ammo1.ru/aa/pic20b/4gcam01.jpg',
-          title: 'какой-то продукт6',
-          body: 'какой-то продукт13',
-          price: 6
-        }
-      ],
-      selectedSort: '',
-      sortOptions: [
-        {
-          value: 'title',
-          name: 'По наименованию'
-        },
-        {
-          value: 'priceMax',
-          name: 'По цене max'
-        },
-        {
-          value: 'priceMin',
-          name: 'По цене min'
-        }
-      ]
-    };
+    return {};
   },
   computed: {
-    sortedProduct() {
-      const sortedTitle = [...this.products].sort((product1, product2) => product1[this.selectedSort]
-        ?.localeCompare(product2[this.selectedSort]));
-      const sortedPrice = [...this.products].sort((product1, product2) => (product1.price >= product2.price ? -1 : 1));
-      if (this.selectedSort === 'title') {
-        return sortedTitle;
-      }
-      if (this.selectedSort === 'priceMax') {
-        return sortedPrice;
-      }
-      if (this.selectedSort === 'priceMin') {
-        return sortedPrice.reverse();
-      }
-      return this.products;
-    }
+    ...mapState({
+      products: state => state.product.products,
+      selectedSort: state => state.product.selectedSort,
+      sortOptions: state => state.product.sortOptions
+    }),
+    ...mapGetters({
+      sortedProduct: 'product/sortedProduct'
+    })
+
   },
   methods: {
-    createProduct(product) {
-      this.products.unshift(product);
-    },
-    removeProduct(product) {
-      this.products = this.product.filter(p => p.id !== product.id);
-    }
+    ...mapMutations({
+      setSelectedSort: 'product/setSelectedSort',
+      removeProduct: 'product/removeProduct',
+      createProduct: 'product/createProduct'
+    })
   }
 };
 </script>

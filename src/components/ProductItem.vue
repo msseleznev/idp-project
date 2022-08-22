@@ -1,5 +1,16 @@
 <template>
     <div class="productBlock">
+        <div
+            class="removeBtn"
+            @click="$emit('remove', product)"
+            @keydown="$emit('remove', product)"
+        >
+            <img
+                style="position: absolute; z-index: 0;"
+                :src="trash"
+                alt="my-logo"
+            >
+        </div>
         <div class="imgWrapper">
             <img
                 class="img"
@@ -22,6 +33,7 @@
 </template>
 
 <script>
+import trash from '@/assets/trash.svg';
 
 export default {
   props: {
@@ -29,6 +41,11 @@ export default {
       type: Object,
       required: true
     }
+  },
+  setup() {
+    return {
+      trash
+    };
   }
 
 };
@@ -42,7 +59,6 @@ export default {
   background: $second;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
-  overflow: hidden;
   transition: 0.5s;
   @media screen and (max-width: 700px) {
     margin: 0 0 16px 0;
@@ -53,11 +69,26 @@ export default {
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.11), 0 6px 10px rgba(0, 0, 0, 0.32);
     transform: scale(1.02);
     transition: 0.5s;
+    .removeBtn {
+      padding: 8px;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      left: 305px;
+      top: -10px;
+      background: $warning;
+      z-index: 1;
+    }
   }
 
   .imgWrapper {
     width: 100%;
     height: 200px;
+    border-radius: 4px 4px 0 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
 
     .img {
       object-fit: cover;

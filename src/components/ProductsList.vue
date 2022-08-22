@@ -12,12 +12,12 @@
             />
         </transition-group>
     </div>
-    <h3
+    <div
         v-else
-        style=" color: red"
+        class="errorBlock"
     >
-        Список постов пуст
-    </h3>
+        Список товаров пуст
+    </div>
 </template>
 
 <script>
@@ -64,6 +64,14 @@ export default {
   .product-list-move {
     transition: transform 0.5s;
   }
+}
+
+.errorBlock {
+  margin-left: 16px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
+  color: $warning;
 }
 
 </style>

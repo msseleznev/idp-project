@@ -71,7 +71,7 @@ export default {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: red;
+    background: $warning;
   }
 }
 
