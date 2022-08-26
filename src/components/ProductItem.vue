@@ -26,7 +26,7 @@
                 {{ product.body }}
             </div>
             <div class="price">
-                {{ product.price }} руб.
+                {{ product.price.toLocaleString('ru-RU') }} руб.
             </div>
         </div>
     </div>
@@ -57,6 +57,7 @@ export default {
   height: 430px;
   margin: 0 0 16px 16px;
   background: $second;
+  color: $text;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
   transition: 0.5s;
@@ -83,17 +84,21 @@ export default {
   }
 
   .imgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 200px;
     border-radius: 4px 4px 0 0;
     overflow: hidden;
     position: relative;
-    z-index: 0;
 
     .img {
-      object-fit: cover;
-      width: 100%;
-      height: 200px;
+      //object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      //height: 200px;
+      //object-position: 0 0;
     }
   }
 

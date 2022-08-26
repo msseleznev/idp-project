@@ -1,3 +1,4 @@
+import '@/assets/index.scss';
 import { createApp } from 'vue';
 import components from '@/components/UI/index';
 import store from '@/store';

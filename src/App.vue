@@ -111,5 +111,8 @@ export default {
   }
 
 }
+.app h2 {
+  color: $text;
+}
 
 </style>
