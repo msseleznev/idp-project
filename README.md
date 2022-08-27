@@ -1,5 +1,5 @@
 # idp-project
-### Для проверки задания:
+### Для запуска проекта:
 > node 16.10.0
 ```
 git clone https://github.com/msseleznev/idp-project.git
