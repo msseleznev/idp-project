@@ -26,7 +26,7 @@
                 {{ product.body }}
             </div>
             <div class="price">
-                {{ product.price.toLocaleString('ru-RU') }} руб.
+                {{ Number(product.price).toLocaleString('ru-RU') }} руб.
             </div>
         </div>
     </div>
